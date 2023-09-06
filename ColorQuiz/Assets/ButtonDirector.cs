@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class ButtonDirector : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class ButtonDirector : MonoBehaviour
     GameObject GameSetting;
 
     Color ans_color = new Color();
+    int[] use_idx;
+    string[] text_set;
+    Color[] color_set;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,19 +39,41 @@ public class ButtonDirector : MonoBehaviour
 
         this.GameSetting = GameObject.Find("GameSetting");
 
-        string[] text_set = this.GameSetting.GetComponent<GameSetting>().text_set;
-        Color[] color_set = this.GameSetting.GetComponent<GameSetting>().color_set;
+        this.text_set = this.GameSetting.GetComponent<GameSetting>().text_set;
+        this.color_set = this.GameSetting.GetComponent<GameSetting>().color_set;
 
         this.QuestionDirector = GameObject.Find("QuestionDirector");
 
-        this.ans_color = QuestionDirector.GetComponent<QuestionDirector>().ans_color;
+        int ans_idx = QuestionDirector.GetComponent<QuestionDirector>().ans_idx;
+        this.ans_color = color_set[ans_idx];
 
-        this.b1_text.GetComponent<TextMeshProUGUI>().text = "red";
-        this.b2_text.GetComponent<TextMeshProUGUI>().text = "blue";
-        this.b3_text.GetComponent<TextMeshProUGUI>().text = "green";
-        this.b4_text.GetComponent<TextMeshProUGUI>().text = "yellow";
+        this.use_idx = Enumerable.Repeat<int>(this.text_set.Length, this.text_set.Length).ToArray();
+        this.use_idx[0] = ans_idx;
+        int i = 1;
+        while (true)
+        {
+            int num = Random.Range(0, this.text_set.Length);
+            if (this.use_idx.Contains(num))
+            {
+                continue;
+            }
+            else
+            {
+                this.use_idx[i] = num;
+                i++;
+                if (i == this.text_set.Length)
+                {
+                    break;
+                }
+            }
+        }
+        this.use_idx.Shuffle();
 
-        
+        this.b1_text.GetComponent<TextMeshProUGUI>().text = this.text_set[this.use_idx[0]];
+        this.b2_text.GetComponent<TextMeshProUGUI>().text = this.text_set[this.use_idx[1]];
+        this.b3_text.GetComponent<TextMeshProUGUI>().text = this.text_set[this.use_idx[2]];
+        this.b4_text.GetComponent<TextMeshProUGUI>().text = this.text_set[this.use_idx[3]];
+
     }
 
     // Update is called once per frame
@@ -57,7 +84,7 @@ public class ButtonDirector : MonoBehaviour
 
     public void B1Click()
     {
-        if (this.ans_color == Color.red)
+        if (this.ans_color == this.color_set[this.use_idx[0]])
         {
             SceneManager.LoadScene("ClearScene");
         }
@@ -69,7 +96,7 @@ public class ButtonDirector : MonoBehaviour
 
     public void B2Click()
     {
-        if (this.ans_color == Color.blue)
+        if (this.ans_color == this.color_set[this.use_idx[1]])
         {
             SceneManager.LoadScene("ClearScene");
         }
@@ -81,7 +108,7 @@ public class ButtonDirector : MonoBehaviour
 
     public void B3Click()
     {
-        if (this.ans_color == Color.green)
+        if (this.ans_color == this.color_set[this.use_idx[2]])
         {
             SceneManager.LoadScene("ClearScene");
         }
@@ -93,7 +120,7 @@ public class ButtonDirector : MonoBehaviour
 
     public void B4Click()
     {
-        if (this.ans_color == Color.yellow)
+        if (this.ans_color == this.color_set[this.use_idx[3]])
         {
             SceneManager.LoadScene("ClearScene");
         }

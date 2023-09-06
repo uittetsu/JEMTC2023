@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GameSetting : MonoBehaviour
 {
+    // test_set ‚Æ color_set ‚ÍŠe—v‘f‚ªˆê’v‚·‚é‚æ‚¤‚É’è‹`‚·‚é
     public string[] text_set = new string[4] { "red", "blue", "green", "yellow" };
     public Color[] color_set = new Color[4] { Color.red, Color.blue, Color.green, Color.yellow };
 
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -18,4 +19,5 @@ public class GameSetting : MonoBehaviour
     {
         
     }
+
 }

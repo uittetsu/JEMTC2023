@@ -8,9 +8,9 @@ public class QuestionDirector : MonoBehaviour
     GameObject question;
     GameObject GameSetting;
 
-# string[] text_set = new string[4] { "red", "blue", "green", "yellow" };
-# Color[] color_set = new Color[4] { Color.red, Color.blue, Color.green, Color.yellow };
-    public Color ans_color = new Color();
+// string[] text_set = new string[4] { "red", "blue", "green", "yellow" };
+// Color[] color_set = new Color[4] { Color.red, Color.blue, Color.green, Color.yellow };
+    public int ans_idx;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class QuestionDirector : MonoBehaviour
         int color_idx = Random.Range(0, color_set.Length);
         this.question.GetComponent<TextMeshProUGUI>().color = color_set[color_idx];
 
-        this.ans_color = color_set[color_idx];
+        this.ans_idx = color_idx;
     }
 
     // Update is called once per frame
