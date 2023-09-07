@@ -23,7 +23,6 @@ public class ButtonDirector : MonoBehaviour
     string[] text_set;
     Color[] color_set;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -86,47 +85,63 @@ public class ButtonDirector : MonoBehaviour
     {
         if (this.ans_color == this.color_set[this.use_idx[0]])
         {
-            SceneManager.LoadScene("ClearScene");
+            //SceneManager.LoadScene("ClearScene");
+            ScoreDirector.collect_num++;
         }
         else
         {
-            SceneManager.LoadScene("FailedScene");
+            //SceneManager.LoadScene("FailedScene");
+            ScoreDirector.incollect_num++;
         }
+
+        SceneManager.LoadScene("GameScene");
     }
 
     public void B2Click()
     {
         if (this.ans_color == this.color_set[this.use_idx[1]])
         {
-            SceneManager.LoadScene("ClearScene");
+            //SceneManager.LoadScene("ClearScene");
+            ScoreDirector.collect_num++;
         }
         else
         {
-            SceneManager.LoadScene("FailedScene");
+            //SceneManager.LoadScene("FailedScene");
+            ScoreDirector.incollect_num++;
         }
+
+        SceneManager.LoadScene("GameScene");
     }
 
     public void B3Click()
     {
         if (this.ans_color == this.color_set[this.use_idx[2]])
         {
-            SceneManager.LoadScene("ClearScene");
+            //SceneManager.LoadScene("ClearScene");
+            ScoreDirector.collect_num++;
         }
         else
         {
-            SceneManager.LoadScene("FailedScene");
+            //SceneManager.LoadScene("FailedScene");
+            ScoreDirector.incollect_num++;
         }
+
+        SceneManager.LoadScene("GameScene");
     }
 
     public void B4Click()
     {
         if (this.ans_color == this.color_set[this.use_idx[3]])
         {
-            SceneManager.LoadScene("ClearScene");
+            //SceneManager.LoadScene("ClearScene");
+            ScoreDirector.collect_num++;
         }
         else
         {
-            SceneManager.LoadScene("FailedScene");
+            //SceneManager.LoadScene("FailedScene");
+            ScoreDirector.incollect_num++;
         }
+
+        SceneManager.LoadScene("GameScene");
     }
 }
