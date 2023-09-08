@@ -6,26 +6,19 @@ using TMPro;
 public class QuestionDirector : MonoBehaviour
 {
     GameObject question;
-    GameObject GameSetting;
 
-// string[] text_set = new string[4] { "red", "blue", "green", "yellow" };
-// Color[] color_set = new Color[4] { Color.red, Color.blue, Color.green, Color.yellow };
     public int ans_idx;
 
     // Start is called before the first frame update
     void Start()
     {
         this.question = GameObject.Find("question");
-        this.GameSetting = GameObject.Find("GameSetting");
 
-        string[] text_set = this.GameSetting.GetComponent<GameSetting>().text_set;
-        Color[] color_set = this.GameSetting.GetComponent<GameSetting>().color_set;
+        int text_idx = Random.Range(0, GameSetting.text_set.Length);
+        this.question.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[text_idx];
 
-        int text_idx = Random.Range(0, text_set.Length);
-        this.question.GetComponent<TextMeshProUGUI>().text = text_set[text_idx];
-
-        int color_idx = Random.Range(0, color_set.Length);
-        this.question.GetComponent<TextMeshProUGUI>().color = color_set[color_idx];
+        int color_idx = Random.Range(0, GameSetting.color_set.Length);
+        this.question.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[color_idx];
 
         this.ans_idx = color_idx;
     }

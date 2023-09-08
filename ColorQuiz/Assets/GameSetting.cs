@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class GameSetting : MonoBehaviour
 {
-    // test_set ‚Æ color_set ‚ÍŠe—v‘f‚ªˆê’v‚·‚é‚æ‚¤‚É’è‹`‚·‚é
-    public string[] text_set = new string[4] { "red", "blue", "green", "yellow" };
-    public Color[] color_set = new Color[4] { Color.red, Color.blue, Color.green, Color.yellow };
+    // test_set ï¿½ï¿½ color_set ï¿½ÍŠeï¿½vï¿½fï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½æ‚¤ï¿½É’ï¿½`ï¿½ï¿½ï¿½ï¿½
+    public static string[] text_set = new string[4] { "red", "blue", "green", "yellow" };
+    public static Color[] color_set = new Color[4] { Color.red, Color.blue, Color.green, Color.yellow };
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Application.targetFrameRate = 60;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static float remaining_time = 30.0f;
+    public static int collect_num = 0;
+    public static int incollect_num = 0;
 
 }
