@@ -16,12 +16,9 @@ public class ButtonDirector : MonoBehaviour
     GameObject b3_text;
     GameObject b4_text;
     GameObject QuestionDirector;
-    GameObject GameSetting;
 
     Color ans_color = new Color();
     int[] use_idx;
-    string[] text_set;
-    Color[] color_set;
 
     // Start is called before the first frame update
     void Start()
@@ -36,22 +33,17 @@ public class ButtonDirector : MonoBehaviour
         this.b3_text = this.b3.transform.GetChild(0).gameObject;
         this.b4_text = this.b4.transform.GetChild(0).gameObject;
 
-        this.GameSetting = GameObject.Find("GameSetting");
-
-        this.text_set = this.GameSetting.GetComponent<GameSetting>().text_set;
-        this.color_set = this.GameSetting.GetComponent<GameSetting>().color_set;
-
         this.QuestionDirector = GameObject.Find("QuestionDirector");
 
         int ans_idx = QuestionDirector.GetComponent<QuestionDirector>().ans_idx;
-        this.ans_color = color_set[ans_idx];
+        this.ans_color = GameSetting.color_set[ans_idx];
 
-        this.use_idx = Enumerable.Repeat<int>(this.text_set.Length, this.text_set.Length).ToArray();
+        this.use_idx = Enumerable.Repeat<int>(GameSetting.text_set.Length, GameSetting.text_set.Length).ToArray();
         this.use_idx[0] = ans_idx;
         int i = 1;
         while (true)
         {
-            int num = Random.Range(0, this.text_set.Length);
+            int num = Random.Range(0, GameSetting.text_set.Length);
             if (this.use_idx.Contains(num))
             {
                 continue;
@@ -60,7 +52,7 @@ public class ButtonDirector : MonoBehaviour
             {
                 this.use_idx[i] = num;
                 i++;
-                if (i == this.text_set.Length)
+                if (i == GameSetting.text_set.Length)
                 {
                     break;
                 }
@@ -68,10 +60,10 @@ public class ButtonDirector : MonoBehaviour
         }
         this.use_idx.Shuffle();
 
-        this.b1_text.GetComponent<TextMeshProUGUI>().text = this.text_set[this.use_idx[0]];
-        this.b2_text.GetComponent<TextMeshProUGUI>().text = this.text_set[this.use_idx[1]];
-        this.b3_text.GetComponent<TextMeshProUGUI>().text = this.text_set[this.use_idx[2]];
-        this.b4_text.GetComponent<TextMeshProUGUI>().text = this.text_set[this.use_idx[3]];
+        this.b1_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[0]];
+        this.b2_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[1]];
+        this.b3_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[2]];
+        this.b4_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[3]];
 
     }
 
@@ -83,15 +75,15 @@ public class ButtonDirector : MonoBehaviour
 
     public void B1Click()
     {
-        if (this.ans_color == this.color_set[this.use_idx[0]])
+        if (this.ans_color == GameSetting.color_set[this.use_idx[0]])
         {
             //SceneManager.LoadScene("ClearScene");
-            ScoreDirector.collect_num++;
+            GameSetting.collect_num++;
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
-            ScoreDirector.incollect_num++;
+            GameSetting.incollect_num++;
         }
 
         SceneManager.LoadScene("GameScene");
@@ -99,15 +91,15 @@ public class ButtonDirector : MonoBehaviour
 
     public void B2Click()
     {
-        if (this.ans_color == this.color_set[this.use_idx[1]])
+        if (this.ans_color == GameSetting.color_set[this.use_idx[1]])
         {
             //SceneManager.LoadScene("ClearScene");
-            ScoreDirector.collect_num++;
+            GameSetting.collect_num++;
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
-            ScoreDirector.incollect_num++;
+            GameSetting.incollect_num++;
         }
 
         SceneManager.LoadScene("GameScene");
@@ -115,15 +107,15 @@ public class ButtonDirector : MonoBehaviour
 
     public void B3Click()
     {
-        if (this.ans_color == this.color_set[this.use_idx[2]])
+        if (this.ans_color == GameSetting.color_set[this.use_idx[2]])
         {
             //SceneManager.LoadScene("ClearScene");
-            ScoreDirector.collect_num++;
+            GameSetting.collect_num++;
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
-            ScoreDirector.incollect_num++;
+            GameSetting.incollect_num++;
         }
 
         SceneManager.LoadScene("GameScene");
@@ -131,15 +123,15 @@ public class ButtonDirector : MonoBehaviour
 
     public void B4Click()
     {
-        if (this.ans_color == this.color_set[this.use_idx[3]])
+        if (this.ans_color == GameSetting.color_set[this.use_idx[3]])
         {
             //SceneManager.LoadScene("ClearScene");
-            ScoreDirector.collect_num++;
+            GameSetting.collect_num++;
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
-            ScoreDirector.incollect_num++;
+            GameSetting.incollect_num++;
         }
 
         SceneManager.LoadScene("GameScene");

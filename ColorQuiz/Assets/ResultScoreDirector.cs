@@ -15,16 +15,13 @@ public class ResultScoreDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.GetComponent<TextMeshProUGUI>().text = "collect :" + ScoreDirector.collect_num.ToString() 
-                                                    + "\nincollect :" + ScoreDirector.incollect_num.ToString()
-                                                    + "\nclick to play again!!";
+        this.GetComponent<TextMeshProUGUI>().text = "collect :" + GameSetting.collect_num.ToString() 
+                                                    + "\nincollect :" + GameSetting.incollect_num.ToString()
+                                                    + "\nclick to retern start";
 
         if (Input.GetMouseButtonDown(0))
         {
-            ScoreDirector.collect_num = 0;
-            ScoreDirector.incollect_num = 0;
-            TimerDirector.remaining_time = 30.0f;
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene("StartScene");
         }
     }
 }
