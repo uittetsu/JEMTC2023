@@ -15,9 +15,16 @@ public class QuestionDirector : MonoBehaviour
         this.question = GameObject.Find("question");
 
         int text_idx = Random.Range(0, GameSetting.text_set.Length);
+
         this.question.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[text_idx];
 
-        int color_idx = Random.Range(0, GameSetting.color_set.Length);
+        // 色とテキストが同じにならないようにする
+        int color_idx = Random.Range(0, GameSetting.color_set.Length - 1);
+        if (color_idx >= text_idx)
+        {
+            color_idx++;
+        }
+
         this.question.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[color_idx];
 
         this.ans_idx = color_idx;

@@ -18,7 +18,7 @@ public class ButtonDirector : MonoBehaviour
     GameObject QuestionDirector;
 
     Color ans_color = new Color();
-    int[] use_idx;
+    int[] use_idx = new int[GameSetting.button_num];
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,7 @@ public class ButtonDirector : MonoBehaviour
         int ans_idx = QuestionDirector.GetComponent<QuestionDirector>().ans_idx;
         this.ans_color = GameSetting.color_set[ans_idx];
 
-        this.use_idx = Enumerable.Repeat<int>(GameSetting.text_set.Length, GameSetting.text_set.Length).ToArray();
+        this.use_idx = Enumerable.Repeat<int>(GameSetting.text_set.Length, GameSetting.button_num).ToArray();
         this.use_idx[0] = ans_idx;
         int i = 1;
         while (true)
@@ -52,12 +52,13 @@ public class ButtonDirector : MonoBehaviour
             {
                 this.use_idx[i] = num;
                 i++;
-                if (i == GameSetting.text_set.Length)
+                if (i == GameSetting.button_num)
                 {
                     break;
                 }
             }
         }
+        //print(string.Join(", ", use_idx.Select(x => x.ToString())));
         this.use_idx.Shuffle();
 
         this.b1_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[0]];
@@ -65,6 +66,10 @@ public class ButtonDirector : MonoBehaviour
         this.b3_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[2]];
         this.b4_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[3]];
 
+        this.b1_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
+        this.b2_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
+        this.b3_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
+        this.b4_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
     }
 
     // Update is called once per frame
