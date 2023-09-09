@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/ClearScene.unity
+    path: Assets/Scenes/ClearScene.unity
     guid: 0f4bec4397031b84890b5f240ad856a9
   - enabled: 1
-    path: Assets/FailedScene.unity
+    path: Assets/Scenes/FailedScene.unity
     guid: 75411d3db89e73046bdabeb762d436fd
   - enabled: 1
-    path: Assets/ResultScene.unity
+    path: Assets/Scenes/ResultScene.unity
     guid: 52d852d254bebcd44a45b2ca5c14152b
   - enabled: 1
-    path: Assets/GameScene.unity
+    path: Assets/Scenes/GameScene.unity
     guid: c43ddea9f614f3549baa1417c3eaba94
   - enabled: 1
-    path: Assets/StartScene.unity
+    path: Assets/Scenes/StartScene.unity
     guid: cbc56b2d208a5ac5480bb0a434493c2c
   m_configObjects: {}
