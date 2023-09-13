@@ -1,28 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class AudioDirector : MonoBehaviour
+public class BGMDirector : MonoBehaviour
 {
     private static bool isLoad = false;
-
-    public AudioClip collect_sound;
-    public AudioClip incollect_sound;
-    public AudioClip question_sound;
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (GameSetting.remaining_time > 10f)
+        {
+            this.GetComponent<AudioSource>().pitch = 0.5f;
+        }
+        else if (GameSetting.remaining_time <= 10f &&  GameSetting.remaining_time > 5f)
+        {
+            this.GetComponent<AudioSource>().pitch = 1f;
+        }
+        else
+        {
+            this.GetComponent<AudioSource>().pitch = 2f;
+        }
+        
     }
-
     private void Awake()
     {
         // this.isLoad‚É‚·‚é‚ÆƒGƒ‰[‚ªo‚é
