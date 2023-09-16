@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
-public class ButtonDirector : MonoBehaviour
+public class NormalButtonDirector : MonoBehaviour
 {
     GameObject b1;
     GameObject b2;
@@ -72,10 +72,10 @@ public class ButtonDirector : MonoBehaviour
         this.b3_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[2]];
         this.b4_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[3]];
 
-        this.b1_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
-        this.b2_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
-        this.b3_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
-        this.b4_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
+        //this.b1_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
+        //this.b2_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
+        //this.b3_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
+        //this.b4_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
     }
 
     // Update is called once per frame
@@ -99,7 +99,7 @@ public class ButtonDirector : MonoBehaviour
             GameSetting.incollect_num++;
         }
 
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("NormalGameScene");
     }
 
     public void B2Click()
@@ -117,7 +117,7 @@ public class ButtonDirector : MonoBehaviour
             GameSetting.incollect_num++;
         }
 
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("NormalGameScene");
     }
 
     public void B3Click()
@@ -135,7 +135,7 @@ public class ButtonDirector : MonoBehaviour
             GameSetting.incollect_num++;
         }
 
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("NormalGameScene");
     }
 
     public void B4Click()
@@ -153,6 +153,6 @@ public class ButtonDirector : MonoBehaviour
             GameSetting.incollect_num++;
         }
 
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("NormalGameScene");
     }
 }

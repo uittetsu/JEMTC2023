@@ -20,9 +20,6 @@ public class StartButtonDirector : MonoBehaviour
 
     public void StartButtonClick()
     {
-        GameSetting.collect_num = 0;
-        GameSetting.incollect_num = 0;
-        GameSetting.remaining_time = 30.0f;
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GameMode");
     }
 }
