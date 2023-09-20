@@ -19,18 +19,14 @@ public class GameModeButtonDirector : MonoBehaviour
 
     public void NormalButtonClick()
     {
-        GameSetting.collect_num = 0;
-        GameSetting.incollect_num = 0;
-        GameSetting.remaining_time = 30.0f;
+        GameSetting.ResetVal();
 
         SceneManager.LoadScene("NormalGameScene");
     }
 
     public void HardButtonClick()
     {
-        GameSetting.collect_num = 0;
-        GameSetting.incollect_num = 0;
-        GameSetting.remaining_time = 30.0f;
+        GameSetting.ResetVal();
 
         SceneManager.LoadScene("HardGameScene");
     }

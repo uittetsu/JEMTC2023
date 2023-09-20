@@ -71,11 +71,6 @@ public class NormalButtonDirector : MonoBehaviour
         this.b2_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[1]];
         this.b3_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[2]];
         this.b4_text.GetComponent<TextMeshProUGUI>().text = GameSetting.text_set[this.use_idx[3]];
-
-        //this.b1_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
-        //this.b2_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
-        //this.b3_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
-        //this.b4_text.GetComponent<TextMeshProUGUI>().color = GameSetting.color_set[Random.Range(0, GameSetting.color_set.Length)];
     }
 
     // Update is called once per frame
@@ -91,12 +86,14 @@ public class NormalButtonDirector : MonoBehaviour
             //SceneManager.LoadScene("ClearScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().collect_sound);
             GameSetting.collect_num++;
+            AddScore();
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().incollect_sound);
             GameSetting.incollect_num++;
+            MinusScore();
         }
 
         SceneManager.LoadScene("NormalGameScene");
@@ -109,12 +106,14 @@ public class NormalButtonDirector : MonoBehaviour
             //SceneManager.LoadScene("ClearScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().collect_sound);
             GameSetting.collect_num++;
+            AddScore();
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().incollect_sound);
             GameSetting.incollect_num++;
+            MinusScore();
         }
 
         SceneManager.LoadScene("NormalGameScene");
@@ -127,12 +126,14 @@ public class NormalButtonDirector : MonoBehaviour
             //SceneManager.LoadScene("ClearScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().collect_sound);
             GameSetting.collect_num++;
+            AddScore();
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().incollect_sound);
             GameSetting.incollect_num++;
+            MinusScore();
         }
 
         SceneManager.LoadScene("NormalGameScene");
@@ -145,14 +146,70 @@ public class NormalButtonDirector : MonoBehaviour
             //SceneManager.LoadScene("ClearScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().collect_sound);
             GameSetting.collect_num++;
+            AddScore();
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().incollect_sound);
             GameSetting.incollect_num++;
+            MinusScore();
         }
 
         SceneManager.LoadScene("NormalGameScene");
+    }
+
+    void AddScore()
+    {
+        int add_score = 0;
+
+        if (GameSetting.pre_ans_time - GameSetting.remaining_time < 1f)
+        {
+            add_score = (int) ((1000 + 100 * GameSetting.continueous_collect_num) * 1.5);
+        }
+        else if (GameSetting.pre_ans_time - GameSetting.remaining_time < 2f)
+        {
+            add_score = (int) ((1000 + 100 * GameSetting.continueous_collect_num) * 1.1);
+        }
+        else
+        {
+            add_score = (int) (1000 + 100 * GameSetting.continueous_collect_num);
+        }
+
+        if (GameSetting.remaining_time < 5f)
+        {
+            add_score = (int) (add_score * 1.2);
+        }
+
+        GameSetting.continueous_collect_num++;
+        GameSetting.pre_ans_time = GameSetting.remaining_time;
+        GameSetting.score += add_score;
+    }
+
+    void MinusScore()
+    {
+        int minus_score = 0;
+
+        if (GameSetting.pre_ans_time - GameSetting.remaining_time < 1f)
+        {
+            minus_score = (int)((-500 + 100 * GameSetting.continueous_collect_num) * 1.5);
+        }
+        else if (GameSetting.pre_ans_time - GameSetting.remaining_time < 2f)
+        {
+            minus_score = (int)((-500 + 100 * GameSetting.continueous_collect_num) * 1.1);
+        }
+        else
+        {
+            minus_score = (int)(-500 + 100 * GameSetting.continueous_collect_num);
+        }
+
+        if (GameSetting.remaining_time < 5f)
+        {
+            minus_score = (int)(minus_score * 1.2);
+        }
+
+        GameSetting.continueous_collect_num = 0;
+        GameSetting.pre_ans_time = GameSetting.remaining_time;
+        GameSetting.score += minus_score;
     }
 }

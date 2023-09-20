@@ -91,12 +91,14 @@ public class HardButtonDirector : MonoBehaviour
             //SceneManager.LoadScene("ClearScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().collect_sound);
             GameSetting.collect_num++;
+            AddScore();
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().incollect_sound);
             GameSetting.incollect_num++;
+            MinusScore();
         }
 
         SceneManager.LoadScene("HardGameScene");
@@ -109,12 +111,14 @@ public class HardButtonDirector : MonoBehaviour
             //SceneManager.LoadScene("ClearScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().collect_sound);
             GameSetting.collect_num++;
+            AddScore();
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().incollect_sound);
             GameSetting.incollect_num++;
+            MinusScore();
         }
 
         SceneManager.LoadScene("HardGameScene");
@@ -127,12 +131,14 @@ public class HardButtonDirector : MonoBehaviour
             //SceneManager.LoadScene("ClearScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().collect_sound);
             GameSetting.collect_num++;
+            AddScore();
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().incollect_sound);
             GameSetting.incollect_num++;
+            MinusScore();
         }
 
         SceneManager.LoadScene("HardGameScene");
@@ -145,14 +151,70 @@ public class HardButtonDirector : MonoBehaviour
             //SceneManager.LoadScene("ClearScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().collect_sound);
             GameSetting.collect_num++;
+            AddScore();
         }
         else
         {
             //SceneManager.LoadScene("FailedScene");
             this.audioSource.PlayOneShot(this.Audio.GetComponent<AudioDirector>().incollect_sound);
             GameSetting.incollect_num++;
+            MinusScore();
         }
 
         SceneManager.LoadScene("HardGameScene");
+    }
+
+    void AddScore()
+    {
+        int add_score = 0;
+
+        if (GameSetting.pre_ans_time - GameSetting.remaining_time < 1f)
+        {
+            add_score = (int)((1000 + 100 * GameSetting.continueous_collect_num) * 1.5);
+        }
+        else if (GameSetting.pre_ans_time - GameSetting.remaining_time < 2f)
+        {
+            add_score = (int)((1000 + 100 * GameSetting.continueous_collect_num) * 1.1);
+        }
+        else
+        {
+            add_score = (int)(1000 + 100 * GameSetting.continueous_collect_num);
+        }
+
+        if (GameSetting.remaining_time < 5f)
+        {
+            add_score = (int)(add_score * 1.2);
+        }
+
+        GameSetting.continueous_collect_num++;
+        GameSetting.pre_ans_time = GameSetting.remaining_time;
+        GameSetting.score += add_score;
+    }
+
+    void MinusScore()
+    {
+        int minus_score = 0;
+
+        if (GameSetting.pre_ans_time - GameSetting.remaining_time < 1f)
+        {
+            minus_score = (int)((-500 + 100 * GameSetting.continueous_collect_num) * 1.5);
+        }
+        else if (GameSetting.pre_ans_time - GameSetting.remaining_time < 2f)
+        {
+            minus_score = (int)((-500 + 100 * GameSetting.continueous_collect_num) * 1.1);
+        }
+        else
+        {
+            minus_score = (int)(-500 + 100 * GameSetting.continueous_collect_num);
+        }
+
+        if (GameSetting.remaining_time < 5f)
+        {
+            minus_score = (int)(minus_score * 1.2);
+        }
+
+        GameSetting.continueous_collect_num = 0;
+        GameSetting.pre_ans_time = GameSetting.remaining_time;
+        GameSetting.score += minus_score;
     }
 }

@@ -14,6 +14,8 @@ public class ScoreDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.GetComponent<TextMeshProUGUI>().text = "³‰ğ :" + GameSetting.collect_num.ToString() +"\n•s³‰ğ :" + GameSetting.incollect_num.ToString();
+        this.GetComponent<TextMeshProUGUI>().text = "“¾“_ :" + GameSetting.score.ToString()
+                                                    +"\n³‰ğ” :" + GameSetting.collect_num.ToString() 
+                                                    +"\n•s³‰ğ” :" + GameSetting.incollect_num.ToString();
     }
 }

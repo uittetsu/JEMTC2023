@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameSetting : MonoBehaviour
@@ -15,4 +16,17 @@ public class GameSetting : MonoBehaviour
     // ボタンの数を設定 test_set以下でなければならない
     public static int button_num = 4;
 
+    public static int score = 0;
+    public static int continueous_collect_num = 0;
+    public static float pre_ans_time = 30.0f;
+
+    public static void ResetVal()
+    {
+        remaining_time = 30.0f;
+        collect_num = 0;
+        incollect_num = 0;
+        score = 0;
+        continueous_collect_num = 0;
+        pre_ans_time = 30.0f;
+    }
 }

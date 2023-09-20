@@ -14,7 +14,6 @@ public class AudioDirector : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-
     }
 
     // Update is called once per frame
