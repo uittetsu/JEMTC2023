@@ -18,7 +18,9 @@ public class GameSetting : MonoBehaviour
 
     public static int score = 0;
     public static int continueous_collect_num = 0;
-    public static float pre_ans_time = 30.0f;
+    public static float pre_ans_time = remaining_time;
+
+    public static int level = 0;
 
     public static void ResetVal()
     {
@@ -27,6 +29,7 @@ public class GameSetting : MonoBehaviour
         incollect_num = 0;
         score = 0;
         continueous_collect_num = 0;
-        pre_ans_time = 30.0f;
+        pre_ans_time = remaining_time;
+        level = 0;
     }
 }
