@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BGMDirector : MonoBehaviour
 {
-    private static bool isLoad = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,28 +22,13 @@ public class BGMDirector : MonoBehaviour
         {
             this.GetComponent<AudioSource>().pitch = 1f;
         }
-        else
+        else if (GameSetting.remaining_time <= 5f && GameSetting.remaining_time > 0f)
         {
             this.GetComponent<AudioSource>().pitch = 2f;
         }
-
-        if (GameSetting.remaining_time <= 0f)
+        else
         {
             this.GetComponent<AudioSource>().Stop();
-            isLoad = false;
-            Destroy(this.gameObject);
         }
-
-    }
-    private void Awake()
-    {
-        // this.isLoadにするとエラーが出る
-        if (isLoad)
-        { // すでにロードされていたら
-            Destroy(this.gameObject); // 自分自身を破棄して終了
-            return;
-        }
-        isLoad = true; // ロードされていなかったら、フラグをロード済みに設定する
-        DontDestroyOnLoad(this.gameObject);
     }
 }

@@ -22,6 +22,8 @@ public class GameModeButtonDirector : MonoBehaviour
         GameSetting.ResetVal();
         GameSetting.level = 0;
 
+        StartBGMDirector.startBGMflag = true;
+
         SceneManager.LoadScene("CountDownScene");
     }
 
@@ -29,6 +31,8 @@ public class GameModeButtonDirector : MonoBehaviour
     {
         GameSetting.ResetVal();
         GameSetting.level = 1;
+
+        StartBGMDirector.startBGMflag = true;
 
         SceneManager.LoadScene("CountDownScene");
     }

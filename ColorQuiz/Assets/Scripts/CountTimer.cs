@@ -54,15 +54,7 @@ public class CountTimer : MonoBehaviour
         }
         else
         {
-            if (GameSetting.level == 0)
-            {
-                SceneManager.LoadScene("NormalGameScene");
-            }
-            else
-            {
-                SceneManager.LoadScene("HardGameScene");
-            }
-            
+            SceneManager.LoadScene("GameScene");
         }
 
         this.timer -= Time.deltaTime;
