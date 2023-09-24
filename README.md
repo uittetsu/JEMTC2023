@@ -14,3 +14,6 @@ https://10.gigafile.nu/1016-mfa09e1c053cbaec220fbb95061a90b02
 
 以下のサイトを参考にフォントを変更する。
 https://cgbox.jp/2023/07/27/unity-font/
+
+2023/10/24まで以下のURLからexeファイルをダウンロード可能
+https://68.gigafile.nu/1024-b6afdf019c55ee8926daee500f8e8c27a
