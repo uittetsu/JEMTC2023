@@ -9,9 +9,9 @@ public class ResultScoreDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<TextMeshProUGUI>().text = "得点 :" + GameSetting.score.ToString()
-                                                    + "\n正解数 :" + GameSetting.collect_num.ToString()
-                                                    + "\n不正解数 :" + GameSetting.incollect_num.ToString();
+        this.GetComponent<TextMeshProUGUI>().text = "得点:" + GameSetting.score.ToString()
+                                                    + "\n正解数:" + GameSetting.collect_num.ToString()
+                                                    + "\n不正解数:" + GameSetting.incollect_num.ToString();
     }
 
     // Update is called once per frame

@@ -42,7 +42,7 @@ public class TimerDirector : MonoBehaviour
             int minute = (int)GameSetting.remaining_time / 60;
             int seconds = (int)GameSetting.remaining_time % 60;
 
-            this.timer_TMP.text = "‚Ì‚±‚è " + seconds.ToString("00") + " •b";
+            this.timer_TMP.text = "‚Ì‚±‚è\n" + seconds.ToString("00") + " •b";
         }
     }
 

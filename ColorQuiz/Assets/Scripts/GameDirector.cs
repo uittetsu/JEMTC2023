@@ -64,10 +64,10 @@ public class GameDirector : MonoBehaviour
         GameObject b3_mb = GameObject.Find("b3_mb");
         GameObject b4_mb = GameObject.Find("b4_mb");
 
-        this.b1_mb_img = b1_mb.GetComponent<Image>();
-        this.b2_mb_img = b2_mb.GetComponent<Image>();
-        this.b3_mb_img = b3_mb.GetComponent<Image>();
-        this.b4_mb_img = b4_mb.GetComponent<Image>();
+        //this.b1_mb_img = b1_mb.GetComponent<Image>();
+        //this.b2_mb_img = b2_mb.GetComponent<Image>();
+        //this.b3_mb_img = b3_mb.GetComponent<Image>();
+        //this.b4_mb_img = b4_mb.GetComponent<Image>();
 
         MakeGame();
     }
@@ -141,10 +141,10 @@ public class GameDirector : MonoBehaviour
 
     void MakeGame()
     {
-        this.b1_mb_img.enabled = false;
-        this.b2_mb_img.enabled = false;
-        this.b3_mb_img.enabled = false;
-        this.b4_mb_img.enabled = false;
+        //this.b1_mb_img.enabled = false;
+        //this.b2_mb_img.enabled = false;
+        //this.b3_mb_img.enabled = false;
+        //this.b4_mb_img.enabled = false;
 
         MakeQuestion();
         MakeButton();
@@ -153,7 +153,7 @@ public class GameDirector : MonoBehaviour
 
     public void B1Click()
     {
-        MakeMB();
+        //MakeMB();
 
         if (this.ans_color == GameSetting.color_set[this.use_idx[0]])
         {
@@ -175,7 +175,7 @@ public class GameDirector : MonoBehaviour
 
     public void B2Click()
     {
-        MakeMB();
+        //MakeMB();
         if (this.ans_color == GameSetting.color_set[this.use_idx[1]])
         {
             //SceneManager.LoadScene("ClearScene");
@@ -196,7 +196,7 @@ public class GameDirector : MonoBehaviour
 
     public void B3Click()
     {
-        MakeMB();
+        //MakeMB();
         if (this.ans_color == GameSetting.color_set[this.use_idx[2]])
         {
             //SceneManager.LoadScene("ClearScene");
@@ -217,7 +217,7 @@ public class GameDirector : MonoBehaviour
 
     public void B4Click()
     {
-        MakeMB();
+        //MakeMB();
         if (this.ans_color == GameSetting.color_set[this.use_idx[3]])
         {
             //SceneManager.LoadScene("ClearScene");
