@@ -22,9 +22,7 @@ public class GameModeButtonDirector : MonoBehaviour
         GameSetting.ResetVal();
         GameSetting.level = 0;
 
-        StartBGMDirector.startBGMflag = true;
-
-        SceneManager.LoadScene("CountDownScene");
+        SceneManager.LoadScene("ExplainScene");
     }
 
     public void HardButtonClick()
@@ -32,8 +30,6 @@ public class GameModeButtonDirector : MonoBehaviour
         GameSetting.ResetVal();
         GameSetting.level = 1;
 
-        StartBGMDirector.startBGMflag = true;
-
-        SceneManager.LoadScene("CountDownScene");
+        SceneManager.LoadScene("ExplainScene");
     }
 }

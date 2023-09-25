@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameMode.unity
     guid: bd1bd14f329706b4b8954d69dd6595c6
   - enabled: 1
+    path: Assets/Scenes/ExplainScene.unity
+    guid: a91e2f0c3f332c5459c2cc4b5264ac9d
+  - enabled: 1
     path: Assets/Scenes/CountDownScene.unity
     guid: 004dcf004e9c8fd43a2c0a29de127c0b
   - enabled: 1
